@@ -1,5 +1,5 @@
 # ABM
-To run the experiments in the paper you must download the datasets and split them according to the number of workers you wish.
+To run the experiments in the paper you must download the datasets and split them according to the number of workers you wish to use.
 This can be done with the following steps.
 
 1. Download the file `rcv1_test.binary.bz2` from https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary.html. Place it in the folder `data`.

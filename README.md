@@ -19,10 +19,10 @@ Here the arguments are defined as follows.
 * `bundle_size` - bundle size.
 * `scale_coeff_smoothness` - this parameter is not mentioned in the paper and should be set to one.
 * `local_L0` - initial smoothness estimate in the first iteration (before the adaptive estimation of the smoothness kicks in). Can be set to one. 
-* `delta` - subproblem tolerance
-* `track_delta` - if the subproblem tolerance should be tracked (makes the algorithm slower).
+* `delta` - master problem tolerance
+* `track_delta` - if the tolerance should be tracked (makes the algorithm slightly slower).
 
-To reconstruct the benchmarking results in the paper, run 
+To reconstruct the benchmark results in the paper, run 
 
 `mpiexec -n 10 python runnerABM.py rcv1_test -1 300 0.00002117029 3e-6 10 1 1 1e-7 False`                                    
 `mpiexec -n 10 python runnerABM.py epsilon -1 700 0.000002 5e-5 10 1 1 1e-7 False`

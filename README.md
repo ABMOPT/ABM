@@ -32,5 +32,6 @@ The following commands run `DAve-RPG`. The last parameter is the step size.
 `mpiexec -n 10 python runnerDAVERPG.py rcv1_test -1 300 0.00002117029 3e-6 142.85`                                    
 `mpiexec -n 10 python runnerDAVERPG.py epsilon -1 700 0.000002 5e-5 11.36`
 
+To plot the results, run the file  `run_plot_functions.py` inside the folder `visualization_tools`.
 
 `

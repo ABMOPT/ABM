@@ -112,9 +112,8 @@ def split_data(dataset_name, num_of_workers):
 
     
 if __name__ == "__main__":
-    #dataset_file_path1 = "rcv1_test"
+    dataset_file_path1 = "rcv1_test"
     dataset_file_path2 = "epsilon" 
     num_of_workers = 9
-    #print("Lo")
-    #split_data(dataset_file_path1, num_of_workers)
+    split_data(dataset_file_path1, num_of_workers)
     split_data(dataset_file_path2, num_of_workers)

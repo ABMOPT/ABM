@@ -3,49 +3,6 @@ import matplotlib.gridspec as gridspec
 import pickle
 import numpy as np
 
-<<<<<<< HEAD
-=======
-# Plots the optimality gap vs. run time.
-def plot_opt_gap_vs_runtime(names_opt_vals_dict, filepath_fig, methods):
-
-    # Initialize figure with 2 rows and len(names_opt_vals_dict) columns.
-    plt.figure(figsize = (20,4))
-    gs1 = gridspec.GridSpec(1, len(names_opt_vals_dict))
-    gs1.update(wspace=0.20, hspace=0.37) # set the spacing between axes. 
-
-    DAVERPG_step_sizes = {"epsilon": 11.36, "MNIST8m": 0.106, "rcv1_test": 142.85}
-
-    for method in methods:
-        counter = 0
-        for dataset_name, opt_val in names_opt_vals_dict.items():
-            if method == "ABM":
-                data_file_path = f"../../experiment_data/ABM/ABM_{dataset_name}_bundle_size=10_delta=1e-07.pickle"
-            elif method == "DAVERPG":
-                data_file_path = f"../../experiment_data/DAVERPG/DAVERPG_{dataset_name}_step_size={DAVERPG_step_sizes[dataset_name]}.pickle"
-            else:
-                print("Not implemented method")
-            with open(data_file_path, 'rb') as handle:
-                data = pickle.load(handle) 
-                objs = data['objs']
-                total_run_time  = data['total_run_time']
-                ax1 = plt.subplot(gs1[counter])
-                plt.axis('on')
-                label = method
-                if label == "DAVERPG":
-                    label = "DAve-RPG"
-                ax1.semilogy(total_run_time, objs - opt_val + 1e-16, label = label)
-                ax1.set_xlabel('Runtime (s)')
-                ax1.legend()
-                if counter == 0:
-                    ax1.set_ylabel(r'$f(x_k) - f^*$', fontsize=12)
-            counter += 1
-   
-    plt.savefig(filepath_fig, bbox_inches='tight') 
- 
-
-
->>>>>>> d0ff3b598571dba0afbcb3c7bef713fa965c43e9
-
 def plot_opt_gap_vs_runtime_and_num_of_grads(names_opt_vals_dict, filepath_fig, methods):
 
     # Initialize figure with 2 rows and len(names_opt_vals_dict) columns.

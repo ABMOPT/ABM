@@ -19,7 +19,7 @@ def plot_opt_gap_vs_runtime(names_opt_vals_dict, filepath_fig, methods):
             if method == "ABM":
                 data_file_path = f"../../experiment_data/ABM/ABM_{dataset_name}_bundle_size=10_delta=1e-07.pickle"
             elif method == "DAVERPG":
-                data_file_path = f"../../experiment_data/DAVERPG/theoretical_step_size/DAVERPG_{dataset_name}_step_size={DAVERPG_step_sizes[dataset_name]}.pickle"
+                data_file_path = f"../../experiment_data/DAVERPG/DAVERPG_{dataset_name}_step_size={DAVERPG_step_sizes[dataset_name]}.pickle"
             else:
                 print("Not implemented method")
             with open(data_file_path, 'rb') as handle:
@@ -31,7 +31,7 @@ def plot_opt_gap_vs_runtime(names_opt_vals_dict, filepath_fig, methods):
                 label = method
                 if label == "DAVERPG":
                     label = "DAve-RPG"
-                ax1.semilogy(total_run_time, objs - opt_val + 1e-16, label = label )
+                ax1.semilogy(total_run_time, objs - opt_val + 1e-16, label = label)
                 ax1.set_xlabel('Runtime (s)')
                 ax1.legend()
                 if counter == 0:
@@ -53,11 +53,13 @@ def plot_opt_gap_vs_runtime_and_num_of_grads(names_opt_vals_dict, filepath_fig, 
     DAVERPG_step_sizes = {"epsilon": 11.36, "MNIST8m": 0.106, "rcv1_test": 142.85}
 
     for method in methods:
+        print("METHOD: ", method)
         counter = 0
         for dataset_name, opt_val in names_opt_vals_dict.items():
             if method == "ABM":
-                data_file_path = f"../../experiment_data/ABM/ABM_{dataset_name}_bundle_size=10_delta=1e-07_run2.pickle"
+                data_file_path = f"../../experiment_data/ABM/ABM_{dataset_name}_bundle_size=10_delta=1e-07.pickle"
             elif method == "DAVERPG":
+                print("ENTERING DAVERPG")
                 data_file_path = f"../../experiment_data/DAVERPG/DAVERPG_{dataset_name}_step_size={DAVERPG_step_sizes[dataset_name]}.pickle"
             with open(data_file_path, 'rb') as handle:
                 data = pickle.load(handle)     
@@ -73,17 +75,17 @@ def plot_opt_gap_vs_runtime_and_num_of_grads(names_opt_vals_dict, filepath_fig, 
                         num_of_communicated_gradients[i] = \
                             num_of_communicated_gradients[i-1] + len(all_worker_sets[i-1])
                     
-                    ax1 = plt.subplot(gs1[counter])
-                    plt.axis('on')
-                    label = method
-                    if label == "DAVERPG":
-                     label = "DAve-RPG"
-                    print(f"Method/num_of_communicated_gradients: {method} / {num_of_communicated_gradients[-1]}")
-                    ax1.semilogy(num_of_communicated_gradients, objs - opt_val + 1e-16, label = label)
-                    ax1.set_xlabel('Number of gradients')
-                    ax1.legend()
-                    if counter == 0:
-                        ax1.set_ylabel(r'$f(x_k) - f^*$', fontsize=12)
+                ax1 = plt.subplot(gs1[counter])
+                plt.axis('on')
+                label = method
+                if label == "DAVERPG":
+                    label = "DAve-RPG"
+                print(f"Method/num_of_communicated_gradients: {method} / {num_of_communicated_gradients[-1]}")
+                ax1.semilogy(num_of_communicated_gradients, objs - opt_val + 1e-16, label = label)
+                ax1.set_xlabel('Number of gradients')
+                ax1.legend()
+                if counter == 0:
+                    ax1.set_ylabel(r'$f(x_k) - f^*$', fontsize=12)
 
 
                 # Plot progress vs. runtime.
@@ -91,6 +93,7 @@ def plot_opt_gap_vs_runtime_and_num_of_grads(names_opt_vals_dict, filepath_fig, 
                 plt.axis('on')
                 if label == "DAVERPG":
                      label = "DAve-RPG"
+                print("label: ", label)
                 ax1.semilogy(total_run_time, objs - opt_val + 1e-16, label = label )
                 ax1.set_xlabel('Runtime (s)')
                 ax1.legend()

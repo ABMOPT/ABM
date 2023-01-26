@@ -21,8 +21,8 @@ plot_opt_gap_vs_runtime_and_num_of_grads(opt_vals, fig2_benchmarking, methods)
 
 
 # ABM's performance with different parameter values.
-fig_sensitivity_analysis = "figures/ABM_parameters.png"
-plot_sensitivity_analysis_bundle_size_and_delta(opt_vals, all_bundle_sizes, all_deltas, fig_sensitivity_analysis)
+#fig_sensitivity_analysis = "figures/ABM_parameters.png"
+#plot_sensitivity_analysis_bundle_size_and_delta(opt_vals, all_bundle_sizes, all_deltas, fig_sensitivity_analysis)
 
 
 

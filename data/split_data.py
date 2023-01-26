@@ -115,5 +115,9 @@ if __name__ == "__main__":
     dataset_file_path1 = "rcv1_test"
     dataset_file_path2 = "epsilon" 
     num_of_workers = 9
+<<<<<<< HEAD
     split_data(dataset_file_path1, num_of_workers)
+=======
+    #split_data(dataset_file_path1, num_of_workers)
+>>>>>>> d0ff3b598571dba0afbcb3c7bef713fa965c43e9
     split_data(dataset_file_path2, num_of_workers)
